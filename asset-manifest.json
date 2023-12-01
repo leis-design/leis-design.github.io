@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/leis-design.github.io/leis-design.github.io/static/css/main.47e076a1.css",
+    "main.js": "/leis-design.github.io/leis-design.github.io/static/js/main.207ddfee.js",
+    "static/media/navbar_background.svg": "/leis-design.github.io/leis-design.github.io/static/media/navbar_background.d6cefec56bf58ef8b67ad9eedd57260a.svg",
+    "index.html": "/leis-design.github.io/leis-design.github.io/index.html",
+    "main.47e076a1.css.map": "/leis-design.github.io/leis-design.github.io/static/css/main.47e076a1.css.map",
+    "main.207ddfee.js.map": "/leis-design.github.io/leis-design.github.io/static/js/main.207ddfee.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.47e076a1.css",
+    "static/js/main.207ddfee.js"
+  ]
+}
