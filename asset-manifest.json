@@ -1,14 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.47e076a1.css",
-    "main.js": "/static/js/main.9a803329.js",
+    "main.css": "/static/css/main.9ce60899.css",
+    "main.js": "/static/js/main.2a9f0501.js",
     "static/media/navbar_background.svg": "/static/media/navbar_background.d6cefec56bf58ef8b67ad9eedd57260a.svg",
+    "static/media/lassonde-YorkU-Logo-White.svg": "/static/media/lassonde-YorkU-Logo-White.53fa0989fcdf6ea4bea6b8e6f7a22413.svg",
     "index.html": "/index.html",
-    "main.47e076a1.css.map": "/static/css/main.47e076a1.css.map",
-    "main.9a803329.js.map": "/static/js/main.9a803329.js.map"
+    "main.9ce60899.css.map": "/static/css/main.9ce60899.css.map",
+    "main.2a9f0501.js.map": "/static/js/main.2a9f0501.js.map"
   },
   "entrypoints": [
-    "static/css/main.47e076a1.css",
-    "static/js/main.9a803329.js"
+    "static/css/main.9ce60899.css",
+    "static/js/main.2a9f0501.js"
   ]
 }
