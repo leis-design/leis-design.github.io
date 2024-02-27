@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+
+.tooltip {
+  @apply relative;
+}
+
+/* This will initially hide the tooltip text */
+.tooltip .tooltiptext {
+  @apply absolute invisible bg-black text-white text-xs py-1 px-2 rounded shadow-lg;
+  @apply transition-opacity opacity-0;
+  bottom: full; /* Position the tooltip above the icon */
+  left: 1/2; /* Center the tooltip */
+  transform: translateX(-50%); /* Precise center alignment */
+  z-index: 10;
+}
+
+.tooltip:hover .tooltiptext {
+  @apply visible opacity-100;
+}
+
+.has-tooltip:hover .tooltip .tooltiptext {
+  @apply visible opacity-100;
+}
+
+.large-tooltip {
+  width: 150px; /* Adjust this value as needed */
+  margin-left: -75px; /* Half of the width to center the tooltip */
+}
+
+@tailwind utilities;
