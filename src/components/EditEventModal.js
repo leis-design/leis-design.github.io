@@ -55,7 +55,7 @@ const iconsForWebsite = importAll(
 const iconForEClass = [
   "https://raw.githubusercontent.com/leis-design/visual-schedule-builder-images/main/0_old_icon_0.png",
   "https://raw.githubusercontent.com/leis-design/visual-schedule-builder-images/main/0_old_icon_1.png",
-  "https://raw.githubusercontent.com/leis-design/visual-schedule-builder-images/main/0_old_icon_10.png",
+  "https://raw.githubusercontent.com/leis-design/visual-schedule-builder-images/main/0_old_icon_2.png",
   "https://raw.githubusercontent.com/leis-design/visual-schedule-builder-images/main/0_old_icon_3.png",
   "https://raw.githubusercontent.com/leis-design/visual-schedule-builder-images/main/0_old_icon_4.png",
   "https://raw.githubusercontent.com/leis-design/visual-schedule-builder-images/main/0_old_icon_5.png",
@@ -319,6 +319,7 @@ function EditEventModal({
     }
 
     const updatedEvent = {
+      id: days[selectedDay].events[selectedEvent].id,
       title: selectedEventTitle,
       icon: iconForEClass[selectedIconIndex],
       category: selectedCategory,
@@ -415,7 +416,7 @@ function EditEventModal({
                       type="text"
                       value={selectedEventTitle}
                       onChange={handleEventChange}
-                      maxLength={10}
+                      maxLength={16}
                     />
                   ) : (
                     <select
@@ -587,6 +588,7 @@ function EditEventModal({
             isOpen={showConfirmationModal}
             onCancel={handleCancelDelete}
             onConfirm={handleConfirmDelete}
+            repeatDeleted={isDeleteAllRepeated}
           />
         </div>
       </div>

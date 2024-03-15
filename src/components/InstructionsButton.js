@@ -53,6 +53,12 @@ function InstructionsButton({ isOpen }) {
                 planner
               </li>
             </ol>
+
+            <p className="mt-4 text-lg text-blue-600 italic">
+              Note: If you edit an event it will no longer be considered a
+              repeated event, and deleteting it will not delete other events
+              which were created at the same time.
+            </p>
           </AccordionItem>
           <AccordionItem title="Delete an Event" isVisible={isOpen}>
             <ol className="list-alpha pl-4 space-y-2 ">

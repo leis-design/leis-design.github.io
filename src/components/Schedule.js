@@ -53,10 +53,15 @@ function Schedule({
     return { start, end };
   };
 
-  // Generate the week labels
-  const weekLabels = days
-    .filter((_, index) => index % 7 === 0)
-    .map((_, index) => {
+  //Calculate the total number of tiles (days and padding days)
+  const totalTiles = days.length + paddingDaysCount;
+
+  // Calculate the number of week labels needed
+  const numberOfWeekLabels = Math.ceil(totalTiles / 7);
+
+  // Generate the week labels based on the total number of week labels
+  const weekLabels = Array.from({ length: numberOfWeekLabels }).map(
+    (_, index) => {
       const { start, end } = getWeekLabelDates(
         index,
         startDate,
@@ -70,6 +75,14 @@ function Schedule({
         month: "short",
         day: "numeric",
       });
+
+      // Debugging: Log the dates
+      console.log(
+        `Week ${
+          index / 7 + 1
+        }: ${formattedWeekStartDate} - ${formattedWeekEndDate}`
+      );
+
       return (
         <div
           key={index}
@@ -80,7 +93,12 @@ function Schedule({
           </div>
         </div>
       );
-    });
+    }
+  );
+
+  // Check the length of the days array to ensure it's a multiple of 7
+  console.log(`Days array length: ${days.length}`);
+  console.log("Days array: ", days);
 
   const dayLabels = [
     "Monday",

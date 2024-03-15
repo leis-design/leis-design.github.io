@@ -113,7 +113,7 @@ function SchedulePage() {
               <span>How-to guides are provided under each step:</span>
             </div>
 
-            <div className="w-10/12 mx-4 text-md md:text-lg lg:text-xl">
+            <div className="w-10/12 mx-4 text-md md:text-lg lg:text-xl font-bold">
               <span>Step 1: </span>
               <span>Creating your planner</span>
             </div>
@@ -151,7 +151,7 @@ function SchedulePage() {
       {isScheduleVisible && (
         <>
           <div className="w-full flex flex-col justify-start items-center mt-8">
-            <div className="w-10/12 mx-4 text-md md:text-lg lg:text-xl">
+            <div className="w-10/12 mx-4 text-md md:text-lg lg:text-xl font-bold">
               <span>Step 2: </span>
               <span>Save your file for future edits</span>
             </div>
@@ -190,7 +190,7 @@ function SchedulePage() {
       {isScheduleVisible && (
         <>
           <div className="w-full flex flex-col justify-start items-center mt-8">
-            <div className="w-10/12 mx-4 text-md md:text-lg lg:text-xl">
+            <div className="w-10/12 mx-4 text-md md:text-lg lg:text-xl font-bold">
               <span>Step 3: </span>
               <span>Transfering your visual planner to eClass</span>
             </div>
@@ -219,17 +219,19 @@ function SchedulePage() {
               </ol>
 
               <div className="flex justify-center items-center my-4">
-                {/*
-                <img
-                  src={instructionsGIF}
-                  alt="GIF of instructions for importing schedule into eClass."
-      />*/}
-
                 <video width="750" height="500" controls>
                   <source src={instructionsVideo} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
+
+              <p className="mt-4 text-lg text-blue-600 italic">
+                Note: It is recommended to keep the original code below the new
+                schedule code so that both the visual planner, and the original
+                table-based schedule are available for students. This is to
+                ensure that UDL (Universal Design for Learning) is followed,
+                thank you!
+              </p>
             </AccordionItem>
           </div>
         </>
