@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.b578bf05.css",
-    "main.js": "/static/js/main.bb23229c.js",
+    "main.css": "/static/css/main.6a5ba53d.css",
+    "main.js": "/static/js/main.63231a96.js",
     "static/media/labeled_instructions.mp4": "/static/media/labeled_instructions.f4e838f0ee1e3bf789db.mp4",
     "static/media/Lassonde_Full_Logo.svg": "/static/media/Lassonde_Full_Logo.deb751af78575b1d05069e97c9326b02.svg",
     "static/media/navbar_background.svg": "/static/media/navbar_background.617017dfcd5b3ae1067850bd1289a54e.svg",
     "static/media/lassonde-YorkU-Logo-White.svg": "/static/media/lassonde-YorkU-Logo-White.011a6ff5b0470930bc8e0c813f1c314e.svg",
     "index.html": "/index.html",
-    "main.b578bf05.css.map": "/static/css/main.b578bf05.css.map",
-    "main.bb23229c.js.map": "/static/js/main.bb23229c.js.map"
+    "main.6a5ba53d.css.map": "/static/css/main.6a5ba53d.css.map",
+    "main.63231a96.js.map": "/static/js/main.63231a96.js.map"
   },
   "entrypoints": [
-    "static/css/main.b578bf05.css",
-    "static/js/main.bb23229c.js"
+    "static/css/main.6a5ba53d.css",
+    "static/js/main.63231a96.js"
   ]
 }
