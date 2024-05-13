@@ -12,13 +12,16 @@ const ScheduleImporter = ({
   setIsImported,
 }) => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
+    setErrorMessage("");
   };
 
   const handleFileImport = () => {
     if (!selectedFile) {
+      setErrorMessage("Please select a file to import.");
       console.error("No file selected.");
       return;
     }
@@ -30,6 +33,9 @@ const ScheduleImporter = ({
         updateScheduleState(scheduleData);
       } catch (error) {
         console.error("Error parsing the file:", error);
+        setErrorMessage(
+          "Failed to parse the file. Please check the file format."
+        );
       }
     };
     reader.readAsText(selectedFile);
@@ -49,8 +55,10 @@ const ScheduleImporter = ({
 
     const updatedDays = scheduleData.days.map((day) => ({
       ...day,
-      // Assuming each day object has a date field
       date: new Date(day.date),
+      events: day.events.map((event) => ({
+        ...event, // Include the id and other properties
+      })),
     }));
 
     setNumberOfWeeks(scheduleData.numberOfWeeks);
@@ -81,6 +89,7 @@ const ScheduleImporter = ({
             onChange={handleFileChange}
           />
         </label>
+        {errorMessage && <p className="text-red-500">{errorMessage}</p>}
         <button
           type="button"
           className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-700"

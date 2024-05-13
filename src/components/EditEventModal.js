@@ -40,13 +40,23 @@ const dependentOptions = {
     "Peer teaching and learning",
     "Gamified experiences",
   ],
-  Assessment: [
-    "Diagnostic assessment",
-    "Formative assessment",
-    "Summative assessment",
-  ],
+  Assessment: ["Quiz", "Assignment", "Midterm", "Exam"],
   Other: [],
 };
+
+const eventColors = {
+  Lecture: { hexValue: "#1b3663", NameOfClass: "bg-lecture" },
+  Lab: { hexValue: "#9c3464", NameOfClass: "bg-lab" },
+  Tutorial: { hexValue: "#00757e", NameOfClass: "bg-tutorial" },
+  Assessment: { hexValue: "#cc3333", NameOfClass: "bg-assessment" },
+  Other: { hexValue: "#4e4c4c", NameOfClass: "bg-other" },
+};
+
+const assessmentTypes = [
+  "Diagnostic assessment",
+  "Formative assessment",
+  "Summative assessment",
+];
 
 const iconsForWebsite = importAll(
   require.context("../images/icons", false, /\.(png|jpe?g|svg)$/)
@@ -208,6 +218,9 @@ function EditEventModal({
   const [selectedCategory, setSelectedCategory] = useState("");
   //const [selectedEvent, setSelectedEvent] = useState("");
   const [selectedEventTitle, setSelectedEventTitle] = useState("");
+  const [selectedAssessmentType, setSelectedAssessmentType] = useState("");
+  const [selectedEventColor, setSelectedEventColor] = useState("");
+
   const [selectedIconIndex, setSelectedIconIndex] = useState(0);
 
   const [isDeleteAllRepeated, setIsDeleteAllRepeated] = useState(false);
@@ -220,6 +233,7 @@ function EditEventModal({
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
     setSelectedEventTitle("");
+    setSelectedAssessmentType("");
   };
 
   const handleEventChange = (e) => {
@@ -228,6 +242,14 @@ function EditEventModal({
 
   const handleDescriptionChange = (e) => {
     setEventDescription(e.target.value);
+  };
+
+  const handleAssessmentTypeChange = (e) => {
+    setSelectedAssessmentType(e.target.value);
+  };
+
+  const handleColorChange = (e) => {
+    setSelectedEventColor(e.target.value);
   };
 
   const nextIcon = () => {
@@ -324,6 +346,7 @@ function EditEventModal({
       icon: iconForEClass[selectedIconIndex],
       category: selectedCategory,
       description: eventDescription,
+      color: selectedCategory === "Other" ? selectedEventColor : undefined,
     };
 
     let newDays = days.map((day, dayIndex) => {
@@ -354,6 +377,7 @@ function EditEventModal({
       setSelectedCategory(eventToEdit.category);
       setSelectedEventTitle(eventToEdit.title);
       setEventDescription(eventToEdit.description || "");
+      setSelectedEventColor(eventToEdit.color || "");
       const iconIndex = iconForEClass.findIndex(
         (icon) => icon === eventToEdit.icon
       );
@@ -370,7 +394,7 @@ function EditEventModal({
       onClick={onClose}
     >
       <div
-        className="bg-gray-600 rounded-lg p-8 w-4/12"
+        className="bg-gray-600 rounded-lg p-8 w-4/12 h-full overflow-y-auto"
         onClick={stopPropagation}
       >
         <h1 className="text-2xl mb-4 text-white">Edit Event</h1>
@@ -402,7 +426,7 @@ function EditEventModal({
                   </select>
                 </div>
               </div>
-              <div className="w-full px-3">
+              <div className="w-full px-3 mb-5">
                 <label
                   className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
                   htmlFor="event-selector"
@@ -416,7 +440,7 @@ function EditEventModal({
                       type="text"
                       value={selectedEventTitle}
                       onChange={handleEventChange}
-                      maxLength={16}
+                      maxLength={30}
                     />
                   ) : (
                     <select
@@ -436,6 +460,62 @@ function EditEventModal({
                   )}
                 </div>
               </div>
+
+              {selectedCategory === "Assessment" && (
+                <div className="w-full px-3 mb-5">
+                  <label className="block uppercase tracking-wide text-white text-xs font-bold mb-2">
+                    Assessment Type
+                  </label>
+                  {assessmentTypes.map((type) => (
+                    <div key={type} className="flex items-center mb-2">
+                      <input
+                        type="radio"
+                        id={type}
+                        name="assessmentType"
+                        value={type}
+                        checked={selectedAssessmentType === type}
+                        onChange={handleAssessmentTypeChange}
+                        className="form-radio h-4 w-4 text-blue-600"
+                      />
+                      <label htmlFor={type} className="ml-2 text-white">
+                        {type}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {selectedCategory === "Other" && (
+                <div className="w-full px-3 mb-5">
+                  <label
+                    className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                    htmlFor="color-selector"
+                  >
+                    Event Color
+                  </label>
+                  <select
+                    id="color-selector"
+                    className="block w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                    value={selectedEventColor}
+                    onChange={handleColorChange}
+                  >
+                    <option value="">Select a color for the event...</option>
+                    {Object.entries(eventColors).map(([name, color]) => (
+                      <option
+                        key={name}
+                        value={color.NameOfClass}
+                        style={{
+                          backgroundColor: color.hexValue,
+                          color: "#fff",
+                        }}
+                      >
+                        {name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+
               <div className="flex items-center w-full px-3 mt-2 mb-3 text-white">
                 <label>
                   <input

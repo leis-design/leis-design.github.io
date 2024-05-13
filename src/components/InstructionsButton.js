@@ -32,42 +32,41 @@ function InstructionsButton({ isOpen }) {
         <div className="my-8 mx-32">
           <AccordionItem title="Create an Event" isVisible={isOpen}>
             <ol className="list-alpha pl-4 space-y-2 ">
-              <li>Click on a day tile to add an event</li>
+              <li>Select a day tile to add an event</li>
               <li>
                 For events that repeat weekly you can select to display the
                 repeated event
               </li>
-              <li>Click the create button to add the event to your planner</li>
+              <li>Select the create button to add the event to your planner</li>
             </ol>
 
             <p className="mt-4 text-lg text-blue-600 italic">
               Note: If you refresh this page while you are building the planner,
-              you will lose your progress.
+              you will lose your progress
             </p>
           </AccordionItem>
           <AccordionItem title="Edit an Event" isVisible={isOpen}>
             <ol className="list-alpha pl-4 space-y-2 ">
-              <li>Click on the event you need to edit</li>
+              <li>Select the event you need to edit</li>
               <li>
-                Click on the update button to display the changes on your
-                planner
+                Select the edit button to display the changes on your planner
               </li>
             </ol>
 
             <p className="mt-4 text-lg text-blue-600 italic">
               Note: If you edit an event it will no longer be considered a
               repeated event, and deleteting it will not delete other events
-              which were created at the same time.
+              which were created at the same time
             </p>
           </AccordionItem>
           <AccordionItem title="Delete an Event" isVisible={isOpen}>
             <ol className="list-alpha pl-4 space-y-2 ">
-              <li>Click on the event you need to delete</li>
+              <li>Select the event you need to delete</li>
               <li>
                 You can choose to delete a single event or select the Delete
                 repeated checkbox to remove repeated events
               </li>
-              <li>Click on the delete button to view your changes</li>
+              <li>Select on the delete button to view your changes</li>
             </ol>
           </AccordionItem>
         </div>

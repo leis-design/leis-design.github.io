@@ -40,13 +40,23 @@ const dependentOptions = {
     "Peer teaching and learning",
     "Gamified experiences",
   ],
-  Assessment: [
-    "Diagnostic assessment",
-    "Formative assessment",
-    "Summative assessment",
-  ],
+  Assessment: ["Quiz", "Assignment", "Midterm", "Exam"],
   Other: [],
 };
+
+const eventColors = {
+  Lecture: { hexValue: "#1b3663", NameOfClass: "bg-lecture" },
+  Lab: { hexValue: "#9c3464", NameOfClass: "bg-lab" },
+  Tutorial: { hexValue: "#00757e", NameOfClass: "bg-tutorial" },
+  Assessment: { hexValue: "#cc3333", NameOfClass: "bg-assessment" },
+  Other: { hexValue: "#4e4c4c", NameOfClass: "bg-other" },
+};
+
+const assessmentTypes = [
+  "Diagnostic assessment",
+  "Formative assessment",
+  "Summative assessment",
+];
 
 const iconsForWebsite = importAll(
   require.context("../images/icons", false, /\.(png|jpe?g|svg)$/)
@@ -230,6 +240,8 @@ function CreateEventModal({ isOpen, onClose, days, setDays, selectedDay }) {
 
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedEvent, setSelectedEvent] = useState("");
+  const [selectedAssessmentType, setSelectedAssessmentType] = useState("");
+  const [eventColor, setEventColor] = useState("");
 
   const [selectedIconIndex, setSelectedIconIndex] = useState(0);
 
@@ -244,10 +256,19 @@ function CreateEventModal({ isOpen, onClose, days, setDays, selectedDay }) {
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
     setSelectedEvent("");
+    setSelectedAssessmentType("");
   };
 
   const handleEventChange = (e) => {
     setSelectedEvent(e.target.value);
+  };
+
+  const handleAssessmentTypeChange = (e) => {
+    setSelectedAssessmentType(e.target.value);
+  };
+
+  const handleColorChange = (e) => {
+    setEventColor(e.target.value);
   };
 
   const handleDayCheckboxChange = (day) => {
@@ -318,6 +339,7 @@ function CreateEventModal({ isOpen, onClose, days, setDays, selectedDay }) {
       icon: iconForEClass[selectedIconIndex],
       category: selectedCategory,
       description: eventDescription,
+      color: selectedCategory === "Other" ? eventColor : undefined,
       repeatId: uuidv4(), // Unique identifier for repeated events
     };
 
@@ -388,6 +410,7 @@ function CreateEventModal({ isOpen, onClose, days, setDays, selectedDay }) {
       setSelectedEvent("");
       setSelectedIconIndex(0);
       setEventDescription("");
+      setEventColor("");
       // Add any other state resets here if necessary
     }
   }, [isOpen]);
@@ -400,7 +423,7 @@ function CreateEventModal({ isOpen, onClose, days, setDays, selectedDay }) {
       onClick={onClose}
     >
       <div
-        className="bg-gray-600 rounded-lg p-8 w-4/12"
+        className="bg-gray-600 rounded-lg p-8 w-4/12 h-full overflow-y-auto"
         onClick={stopPropagation}
       >
         <h1 className="text-2xl mb-4 text-white">Create Event</h1>
@@ -446,7 +469,7 @@ function CreateEventModal({ isOpen, onClose, days, setDays, selectedDay }) {
                       type="text"
                       value={selectedEvent}
                       onChange={handleEventChange}
-                      maxLength={16}
+                      maxLength={30}
                     />
                   ) : (
                     <select
@@ -466,6 +489,61 @@ function CreateEventModal({ isOpen, onClose, days, setDays, selectedDay }) {
                   )}
                 </div>
               </div>
+              {selectedCategory === "Assessment" && (
+                <div className="w-full px-3 mb-5">
+                  <label className="block uppercase tracking-wide text-white text-xs font-bold mb-2">
+                    Assessment Type
+                  </label>
+                  {assessmentTypes.map((type) => (
+                    <div key={type} className="flex items-center mb-2">
+                      <input
+                        type="radio"
+                        id={type}
+                        name="assessmentType"
+                        value={type}
+                        checked={selectedAssessmentType === type}
+                        onChange={handleAssessmentTypeChange}
+                        className="form-radio h-4 w-4 text-blue-600"
+                      />
+                      <label htmlFor={type} className="ml-2 text-white">
+                        {type}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {selectedCategory === "Other" && (
+                <div className="w-full px-3 mb-5">
+                  <label
+                    className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                    htmlFor="color-selector"
+                  >
+                    Event Color
+                  </label>
+                  <select
+                    id="color-selector"
+                    className="block w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                    value={eventColor}
+                    onChange={handleColorChange}
+                  >
+                    <option value="">Select a color for the event...</option>
+                    {Object.entries(eventColors).map(([name, color]) => (
+                      <option
+                        key={name}
+                        value={color.NameOfClass}
+                        style={{
+                          backgroundColor: color.hexValue,
+                          color: "#fff",
+                        }}
+                      >
+                        {name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+
               <div className="day-selection w-full  px-3 flex flex-col justify-center mb-4">
                 <div className="block uppercase tracking-wide text-white text-xs font-bold mb-5">
                   Repeat weekly ?

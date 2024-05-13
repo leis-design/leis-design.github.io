@@ -43,6 +43,9 @@ function Schedule({
     ];
   };
 
+  // Calculate the end padding count
+  const endPaddingDaysCount = (7 - ((days.length + paddingDaysCount) % 7)) % 7;
+
   // Function to get formatted week label dates
   const getWeekLabelDates = (index, startDate, paddingDaysCount) => {
     const start = new Date(startDate);
@@ -154,7 +157,7 @@ function Schedule({
               <Day
                 key={dayIndex}
                 date={day.date}
-                className="day flex flex-col items-start justify-start px-2 py-4 bg-neutral-300 w-40 md:w-44 lg:w-48 h-40 md:h-44 lg:h-48 rounded-md"
+                className="flex flex-col items-start justify-start px-2 py-4 w-40 md:w-44 lg:w-48 h-40 md:h-44 lg:h-48 rounded-md"
                 setSelectedEvent={setSelectedEvent}
                 onClick={() => {
                   setSelectedDay(dayIndex);
@@ -168,6 +171,8 @@ function Schedule({
                     title={event.title}
                     icon={event.icon}
                     category={event.category}
+                    description={event.description}
+                    color={event.color}
                     onClick={(e) => {
                       setSelectedDay(dayIndex);
                       setSelectedEvent(eventIndex);
@@ -179,6 +184,10 @@ function Schedule({
               </Day>
             );
           })}
+
+          {Array.from({ length: endPaddingDaysCount }, (_, index) => (
+            <PaddingDay key={`padding-end-${index}`} />
+          ))}
         </div>
       </div>
     </div>

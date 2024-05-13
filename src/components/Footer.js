@@ -21,7 +21,7 @@ function Footer() {
             className="text-blue-500"
             href="mailto:leis@lassonde.yorku.ca?subject=Feedback%20Visual%20Calendar%20Builder%20App"
           >
-            Click on this link to share your feedback.
+            Share your feedback here.
           </a>
         </div>
       </div>

@@ -10,10 +10,12 @@ function ScheduleExporter({ isOpen, numberOfWeeks, days, startDate, endDate }) {
         date: day.date,
         events: day.events
           ? day.events.map((event) => ({
+              id: event.id,
               title: event.title,
               description: event.description,
               icon: event.icon,
               category: event.category,
+              color: event.color,
               repeatId: event.repeatId,
             }))
           : [],

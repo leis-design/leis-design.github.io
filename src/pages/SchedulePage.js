@@ -38,7 +38,8 @@ function SchedulePage() {
     const diffDays = Math.round((end - start) / oneDay) + 1;
 
     // Validate the number of days to prevent invalid array lengths
-    if (diffDays <= 0 || diffDays > 366) {
+    if (diffDays <= 0 || diffDays > 731) {
+      //Cannot create a schedule greater than 2 full years (accounts for if one year is a leap year)
       console.error("Invalid range for days:", diffDays);
       return { daysArray: [] }; // Return an empty array or handle the error as appropriate
     }
@@ -67,6 +68,12 @@ function SchedulePage() {
               <li>Save your file for edits later</li>
               <li>Easily transfer the visual planner to eClass</li>
             </ol>
+            <p className="mt-4 text-lg text-blue-600 italic">
+              Note: For optimal performance, please use this application using
+              the Chrome, Firefox, or Edge browsers, and a desktop or laptop
+              computer, as it is not designed for mobile devices or the Safari
+              browser
+            </p>
           </div>
         </div>
       )}
@@ -120,17 +127,22 @@ function SchedulePage() {
 
             <div className="w-10/12 mx-4 text-md md:text-lg lg:text-xl">
               <span>
-                <p className="mx-2">1. Click on a day tile to add an event</p>
+                <p className="mx-2">1. Select a day tile to add an event</p>
                 <p className="mx-2">
                   2. For events that repeat weekly you can select to display the
                   repeated event
                 </p>
                 <p className="mx-2">
-                  3. Click the create button to add the event to your planner
+                  3. Select the create button to add the event to your planner
+                </p>
+                <p className="mx-2">
+                  4. To edit an existing event, select an event to view and
+                  update its details. Select the 'update' button to display the
+                  changes on your planner.
                 </p>
                 <p className="mx-2 mt-2 text-lg text-blue-600 italic">
                   Note: If you refresh this page while you are building the
-                  planner, you will lose your progress.
+                  planner, you will lose your progress
                 </p>
               </span>
             </div>
@@ -157,22 +169,19 @@ function SchedulePage() {
             </div>
           </div>
 
-          <div className="my-8 mx-32">
-            <AccordionItem
-              title="Saving your file"
-              isVisible={isScheduleVisible}
-            >
-              <ol className="list-decimal pl-4 space-y-2 ">
-                <li>
-                  Click the 'Save file' button. This will dowload a copy of your
-                  planner to your local computer (.json file)
-                </li>
-                <li>
-                  You can use this file to edit the existing planner on the home
-                  page.
-                </li>
-              </ol>
-            </AccordionItem>
+          <div className="w-full flex flex-col justify-start items-center mt-4">
+            <div className="w-10/12 mx-4 text-md md:text-lg lg:text-xl">
+              <span>
+                <p className="mx-2">
+                  1. Select the 'Save file' button. This will dowload a copy of
+                  your planner to your local computer (.json file)
+                </p>
+                <p className="mx-2">
+                  2. You can use this file to edit the existing planner on the
+                  home page
+                </p>
+              </span>
+            </div>
           </div>
         </>
       )}
@@ -196,42 +205,39 @@ function SchedulePage() {
             </div>
           </div>
 
-          <div className="my-8 mx-32">
-            <AccordionItem
-              title="Add the planner to eClass"
-              isVisible={isScheduleVisible}
-            >
-              <ol className="list-decimal pl-4 space-y-">
-                <li>
-                  Once you are staisfied with your planner, click the Copy Code
-                  button below. The code to your planner will be copied to your
-                  clipboard.
-                </li>
-                <li>
-                  In your eClass course, Navigate to the Course Schedule page
+          <div className="w-full flex flex-col justify-start items-center mt-4">
+            <div className="w-10/12 mx-4 text-md md:text-lg lg:text-xl">
+              <span>
+                <p className="mx-2">
+                  1. Once you are satisfied with your planner, select the Copy
+                  Code button below. The code to your planner will be copied to
+                  your clipboard
+                </p>
+                <p className="mx-2">
+                  2. In your eClass course, navigate to the Course Schedule page
                   and select the settings button to edit the page. You can
                   toggle to html view and replace the code with the contents of
-                  your clipboard.
-                </li>
-                <li>
-                  Hit Save and display button to view your planner in eClass
-                </li>
-              </ol>
+                  your clipboard
+                </p>
+                <p className="mx-2">
+                  3. Select the Save and display button to view your planner in
+                  eClass
+                </p>
+              </span>
+            </div>
+          </div>
 
+          <div className="my-8 mx-32">
+            <AccordionItem
+              title="Video demo for transferring planner to eClass"
+              isVisible={isScheduleVisible}
+            >
               <div className="flex justify-center items-center my-4">
                 <video width="750" height="500" controls>
                   <source src={instructionsVideo} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
-
-              <p className="mt-4 text-lg text-blue-600 italic">
-                Note: It is recommended to keep the original code below the new
-                schedule code so that both the visual planner, and the original
-                table-based schedule are available for students. This is to
-                ensure that UDL (Universal Design for Learning) is followed,
-                thank you!
-              </p>
             </AccordionItem>
           </div>
         </>
