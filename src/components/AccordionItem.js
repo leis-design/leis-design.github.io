@@ -1,27 +1,29 @@
 import React, { useState } from "react";
 
-const AccordionItem = ({ number, title, isVisible, children }) => {
+const AccordionItem = ({ title, isVisible, children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   if (!isVisible) return null;
 
   return (
-    <div className="w-full flex flex-col justify-start items-center text-lg my-1">
+    <div className="my-1 text-lg">
       <button
-        className="w-11/12 bg-slate-200 rounded-md shadow-md border-2 border-slate-400 flex justify-between items-center"
+        className="w-full bg-slate-200 rounded-md shadow-md border-2 border-slate-400 flex justify-between items-center p-4"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="m-4 text-md md:text-lg lg:text-xl">{title}</span>
+        <span className="text-sm sm:text-md md:text-lg lg:text-xl">
+          {title}
+        </span>
         <span
-          className={`text-slate-600 transform duration-300 mr-4 ${
+          className={`transform duration-300 mr-4 text-slate-600 ${
             isOpen ? "rotate-180" : ""
           }`}
         >
-          &#9660;
+          &#9660; {/* Downward arrow indicating collapsible action */}
         </span>
       </button>
       {isOpen && (
-        <div className="w-11/12 bg-slate-100 rounded-md shadow-md px-8 py-4">
+        <div className="w-full bg-slate-100 rounded-md shadow-md px-8 py-4">
           {children}
         </div>
       )}

@@ -1,3 +1,5 @@
+import React from "react";
+
 function InstructionsModal({ isOpen, onClose, children }) {
   if (!isOpen) return null;
 
@@ -8,24 +10,26 @@ function InstructionsModal({ isOpen, onClose, children }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50"
+      className="fixed inset-0 z-50 flex items-center justify-center px-4 py-2 bg-black bg-opacity-50"
       onClick={onClose} // Close modal when overlay is clicked
     >
       <div
-        className="bg-gray-600 rounded-lg p-8 w-1/2 max-h-full "
+        className="bg-gray-600 rounded-lg p-4 w-full max-w-4xl overflow-hidden flex flex-col items-center justify-start"
+        style={{ maxHeight: "90vh" }} // Limit the height of the modal
         onClick={stopPropagation} // Prevents click inside modal from closing it
-        style={{ maxHeight: "80vh" }} // Adjust the value as needed
       >
-        <div className="text-3xl mb-4 text-white"> How To's:</div>
+        <h1 className="text-2xl md:text-3xl lg:text-4xl mb-2 text-white">
+          How To's:
+        </h1>
         <div
-          className="text-lg mb-4 overflow-y-auto"
-          style={{ maxHeight: "65vh" }}
+          className="overflow-auto w-full px-2 py-1"
+          style={{ maxHeight: "75vh" }}
         >
           {children}
         </div>
         <button
           onClick={onClose}
-          className="mt-4 px-4 py-2 bg-red-500 text-white rounded"
+          className="mt-4 px-4 py-2 bg-red-500 text-white rounded focus:outline-none transition duration-300 ease-in-out hover:bg-red-600"
         >
           Close
         </button>

@@ -89,7 +89,7 @@ function Schedule({
       return (
         <div
           key={index}
-          className="week-label flex flex-col items-center justify-center mb-2 px-2 py-4 bg-neutral-800 w-6 md:w-8 lg:w-10 h-40 md:h-44 lg:h-48 rounded-md text-white"
+          className="week-label flex flex-col items-center justify-center px-2 py-4 bg-neutral-800 w-6 md:w-8 lg:w-10 h-40 md:h-44 lg:h-48 rounded-md text-white"
         >
           <div className="-rotate-90 whitespace-nowrap text-xs md:text-sm lg:text-base xl:text-lg">
             {formattedWeekStartDate} - {formattedWeekEndDate}
@@ -142,7 +142,7 @@ function Schedule({
         ))}
       </div>
       <div className="flex min-w-max max-w-3xl overflow-x-auto">
-        <div className="flex flex-col mr-2">{weekLabels}</div>
+        <div className="flex flex-col gap-2 mr-2">{weekLabels}</div>
 
         <div
           id="schedule"

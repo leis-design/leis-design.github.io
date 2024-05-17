@@ -64,15 +64,14 @@ function SchedulePage() {
           <div className="text-md md:text-lg lg:text-xl mb-4 px-4">
             <p>Use this tool to:</p>
             <ol className="mx-8 my-2 list-decimal list-inside text-md md:text-lg lg:text-xl">
-              <li>Build a visual planner for your course</li>
-              <li>Save your file for edits later</li>
-              <li>Easily transfer the visual planner to eClass</li>
+              <li>Build a visual planner for your course.</li>
+              <li>Save your file for edits later.</li>
+              <li>Easily transfer the visual planner to eClass.</li>
             </ol>
-            <p className="mt-4 text-lg text-blue-600 italic">
+            <p className="mt-4 text-lg text-red-500 italic font-semibold">
               Note: For optimal performance, please use this application using
               the Chrome, Firefox, or Edge browsers, and a desktop or laptop
-              computer, as it is not designed for mobile devices or the Safari
-              browser
+              computer
             </p>
           </div>
         </div>
@@ -111,8 +110,8 @@ function SchedulePage() {
           <div className="w-full flex flex-col justify-start items-center mt-4">
             <div className="w-10/12 mx-4 mb-4 text-lg md:text-xl lg:text-2xl">
               <span>
-                Follow the steps below to create, transfer (to eClass) and save
-                your visual planner
+                Follow the steps below to create, save, and transfer your visual
+                planner to eClass
               </span>
             </div>
 
@@ -127,22 +126,25 @@ function SchedulePage() {
 
             <div className="w-10/12 mx-4 text-md md:text-lg lg:text-xl">
               <span>
-                <p className="mx-2">1. Select a day tile to add an event</p>
+                <p className="mx-2">1. Select a day tile to add an event.</p>
+                <div className="ml-8">
+                  <p className="mx-2">
+                    a. For events that repeat weekly you can select to display
+                    the repeated event.
+                  </p>
+                  <p className="mx-2">
+                    b. Select the create button to add the event to your
+                    planner.
+                  </p>
+                </div>
                 <p className="mx-2">
-                  2. For events that repeat weekly you can select to display the
-                  repeated event
-                </p>
-                <p className="mx-2">
-                  3. Select the create button to add the event to your planner
-                </p>
-                <p className="mx-2">
-                  4. To edit an existing event, select an event to view and
+                  2. To edit an existing event, select an event to view and
                   update its details. Select the 'update' button to display the
                   changes on your planner.
                 </p>
-                <p className="mx-2 mt-2 text-lg text-blue-600 italic">
+                <p className="mx-2 mt-2 text-lg text-red-500 italic font-semibold">
                   Note: If you refresh this page while you are building the
-                  planner, you will lose your progress
+                  planner, you will lose your progress.
                 </p>
               </span>
             </div>
@@ -174,11 +176,11 @@ function SchedulePage() {
               <span>
                 <p className="mx-2">
                   1. Select the 'Save file' button. This will dowload a copy of
-                  your planner to your local computer (.json file)
+                  your planner to your local computer (.json file).
                 </p>
                 <p className="mx-2">
                   2. You can use this file to edit the existing planner on the
-                  home page
+                  home page.
                 </p>
               </span>
             </div>
@@ -211,17 +213,17 @@ function SchedulePage() {
                 <p className="mx-2">
                   1. Once you are satisfied with your planner, select the Copy
                   Code button below. The code to your planner will be copied to
-                  your clipboard
+                  your clipboard.
                 </p>
                 <p className="mx-2">
                   2. In your eClass course, navigate to the Course Schedule page
                   and select the settings button to edit the page. You can
                   toggle to html view and replace the code with the contents of
-                  your clipboard
+                  your clipboard.
                 </p>
                 <p className="mx-2">
                   3. Select the Save and display button to view your planner in
-                  eClass
+                  eClass.
                 </p>
               </span>
             </div>
