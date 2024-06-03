@@ -7,7 +7,7 @@ import ScheduleExporter from "../components/ScheduleExporter";
 import CreateEventModal from "../components/CreateEventModal";
 import EditEventModal from "../components/EditEventModal";
 import AccordionItem from "../components/AccordionItem";
-import instructionsVideo from "../images/labeled_instructions.mp4";
+import instructionsVideo from "../images/labeled_instructions_v2.mp4";
 import InstructionsButton from "../components/InstructionsButton";
 
 function SchedulePage() {

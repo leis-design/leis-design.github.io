@@ -16,6 +16,7 @@ const dependentOptions = {
     "Lecture",
     "Panel",
     "Peer teaching and learning",
+    "Other",
   ],
   Lab: [
     "Case studies",
@@ -32,6 +33,7 @@ const dependentOptions = {
     "Simulations",
     "Small group experiments",
     "Tutorials sessions",
+    "Other",
   ],
   Tutorial: [
     "Active learning",
@@ -39,6 +41,7 @@ const dependentOptions = {
     "Gamified experiences",
     "Peer teaching and learning",
     "Tutorial",
+    "Other",
   ],
   Assessment: [
     "Assignment",
@@ -53,8 +56,9 @@ const dependentOptions = {
     "Project",
     "Quiz",
     "Reflection",
+    "Other",
   ],
-  Other: [],
+  Other: ["Other"],
 };
 
 const eventColors = {
@@ -219,6 +223,8 @@ function CreateEventModal({ isOpen, onClose, days, setDays, selectedDay }) {
 
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedEvent, setSelectedEvent] = useState("");
+  const [customEventName, setCustomEventName] = useState("");
+
   const [selectedAssessmentType, setSelectedAssessmentType] = useState("");
   const [eventColor, setEventColor] = useState("");
 
@@ -236,6 +242,11 @@ function CreateEventModal({ isOpen, onClose, days, setDays, selectedDay }) {
     setSelectedCategory(e.target.value);
     setSelectedEvent("");
     setSelectedAssessmentType("");
+    setCustomEventName("");
+  };
+
+  const handleCustomEventNameChange = (e) => {
+    setCustomEventName(e.target.value);
   };
 
   const handleEventChange = (e) => {
@@ -321,7 +332,7 @@ function CreateEventModal({ isOpen, onClose, days, setDays, selectedDay }) {
 
     const newEvent = {
       id: uuidv4(),
-      title: selectedEvent,
+      title: selectedEvent === "Other" ? customEventName : selectedEvent,
       icon: iconForEClass[selectedIconIndex],
       category: selectedCategory,
       description: eventDescription,
@@ -455,7 +466,7 @@ function CreateEventModal({ isOpen, onClose, days, setDays, selectedDay }) {
                       type="text"
                       value={selectedEvent}
                       onChange={handleEventChange}
-                      maxLength={30}
+                      maxLength={24}
                     />
                   ) : (
                     <select
@@ -475,6 +486,25 @@ function CreateEventModal({ isOpen, onClose, days, setDays, selectedDay }) {
                   )}
                 </div>
               </div>
+              {selectedEvent === "Other" && (
+                <div className="w-full px-3 mb-5">
+                  <label
+                    className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                    htmlFor="custom-event-name"
+                  >
+                    Custom Event Name
+                  </label>
+                  <input
+                    id="custom-event-name"
+                    className="block w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                    type="text"
+                    value={customEventName}
+                    onChange={handleCustomEventNameChange}
+                    maxLength={24}
+                    placeholder="Enter custom event name"
+                  />
+                </div>
+              )}
               {selectedCategory === "Assessment" && (
                 <div className="w-full px-3 mb-5">
                   <label className="block uppercase tracking-wide text-white text-xs font-bold mb-2">

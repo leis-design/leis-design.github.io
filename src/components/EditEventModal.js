@@ -16,6 +16,7 @@ const dependentOptions = {
     "Lecture",
     "Panel",
     "Peer teaching and learning",
+    "Other",
   ],
   Lab: [
     "Case studies",
@@ -32,6 +33,7 @@ const dependentOptions = {
     "Simulations",
     "Small group experiments",
     "Tutorials sessions",
+    "Other",
   ],
   Tutorial: [
     "Active learning",
@@ -39,6 +41,7 @@ const dependentOptions = {
     "Gamified experiences",
     "Peer teaching and learning",
     "Tutorial",
+    "Other",
   ],
   Assessment: [
     "Assignment",
@@ -53,8 +56,9 @@ const dependentOptions = {
     "Project",
     "Quiz",
     "Reflection",
+    "Other",
   ],
-  Other: [],
+  Other: ["Other"],
 };
 
 const eventColors = {
@@ -72,7 +76,7 @@ const assessmentTypes = [
 ];
 
 const iconsForWebsite = importAll(
-  require.context("../images/icons", false, /\.(png|jpe?g|svg)$/)
+  require.context("../images/icons_v3", false, /\.(png|jpe?g|svg)$/)
 );
 
 const iconForEClass = [
@@ -195,10 +199,12 @@ function EditEventModal({
   selectedEvent,
 }) {
   const [selectedCategory, setSelectedCategory] = useState("");
-  //const [selectedEvent, setSelectedEvent] = useState("");
+  const [selectedEventType, setSelectedEventType] = useState("");
   const [selectedEventTitle, setSelectedEventTitle] = useState("");
   const [selectedAssessmentType, setSelectedAssessmentType] = useState("");
   const [selectedEventColor, setSelectedEventColor] = useState("");
+
+  const [customEventName, setCustomEventName] = useState("");
 
   const [selectedIconIndex, setSelectedIconIndex] = useState(0);
 
@@ -208,6 +214,8 @@ function EditEventModal({
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   const [submitAttempted, setSubmitAttempted] = useState(false);
+
+  const [isOtherEvent, setIsOtherEvent] = useState(false);
 
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
@@ -219,12 +227,28 @@ function EditEventModal({
     setSelectedEventTitle(e.target.value);
   };
 
+  const handleCustomEventNameChange = (e) => {
+    setCustomEventName(e.target.value);
+  };
+
   const handleDescriptionChange = (e) => {
     setEventDescription(e.target.value);
   };
 
   const handleAssessmentTypeChange = (e) => {
     setSelectedAssessmentType(e.target.value);
+  };
+
+  const checkIfOtherEvent = (titleOfEvent) => {
+    console.log("titleOfEvent: ", titleOfEvent);
+
+    // Flatten all events into a single array excluding 'Other'
+    const allEvents = Object.values(dependentOptions).flat();
+
+    console.log("allEvents: ", allEvents);
+
+    // Check if the provided eventTitle is not in the array of predefined events
+    return !allEvents.includes(titleOfEvent);
   };
 
   useEffect(() => {
@@ -328,7 +352,8 @@ function EditEventModal({
 
     const updatedEvent = {
       id: days[selectedDay].events[selectedEvent].id,
-      title: selectedEventTitle,
+      title:
+        selectedEventTitle === "Other" ? customEventName : selectedEventTitle,
       icon: iconForEClass[selectedIconIndex],
       category: selectedCategory,
       description: eventDescription,
@@ -360,8 +385,21 @@ function EditEventModal({
     if (isOpen && selectedEvent != null) {
       // Assuming 'selectedEvent' is an index or key to find the event in 'days'
       const eventToEdit = days[selectedDay].events[selectedEvent];
+
+      setIsOtherEvent(checkIfOtherEvent(eventToEdit.title));
+
+      setCustomEventName(eventToEdit.title);
+
       setSelectedCategory(eventToEdit.category);
-      setSelectedEventTitle(eventToEdit.title);
+
+      console.log(isOtherEvent);
+
+      setSelectedEventTitle(
+        selectedCategory !== "Other" && isOtherEvent
+          ? "Other"
+          : eventToEdit.title
+      );
+
       setEventDescription(eventToEdit.description || "");
       setSelectedEventColor(eventToEdit.color || "");
       const iconIndex = iconForEClass.findIndex(
@@ -426,7 +464,7 @@ function EditEventModal({
                       type="text"
                       value={selectedEventTitle}
                       onChange={handleEventChange}
-                      maxLength={30}
+                      maxLength={24}
                     />
                   ) : (
                     <select
@@ -446,7 +484,25 @@ function EditEventModal({
                   )}
                 </div>
               </div>
-
+              {selectedCategory !== "Other" && isOtherEvent && (
+                <div className="w-full px-3 mb-5">
+                  <label
+                    className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                    htmlFor="custom-event-name"
+                  >
+                    Custom Event Name
+                  </label>
+                  <input
+                    id="custom-event-name"
+                    className="block w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                    type="text"
+                    value={customEventName}
+                    onChange={handleCustomEventNameChange}
+                    maxLength={24}
+                    placeholder="Enter custom event name"
+                  />
+                </div>
+              )}
               {selectedCategory === "Assessment" && (
                 <div className="w-full px-3 mb-5">
                   <label className="block uppercase tracking-wide text-white text-xs font-bold mb-2">
