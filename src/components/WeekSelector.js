@@ -43,7 +43,7 @@ function WeekSelector({
 
   return (
     <div className="mx-2">
-      <form className="max-w-xlg h-96 mx-auto my-10 p-6 bg-white rounded-md shadow-md">
+      <form className="max-w-xlg h-96 mx-auto mt-2 mb-10 p-6 bg-white rounded-md shadow-md">
         <div className="mb-4">
           <p className="block mb-2 text-sm md:text-base lg:text-lg font-medium text-gray-700">
             Please enter the start and end date of your course below:

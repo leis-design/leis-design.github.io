@@ -79,7 +79,7 @@ const ScheduleImporter = ({
 
   return (
     <div className="mx-2">
-      <form className="max-w-xlg h-96 mx-auto my-10 p-6 bg-white rounded-md shadow-md">
+      <form className="max-w-xlg h-96 mx-auto mt-2 mb-10 p-6 bg-white rounded-md shadow-md">
         <label className="block mb-2 text-sm md:text-base lg:text-lg font-medium text-gray-700">
           <p>Edit an existing planner.</p>
           <p>Upload your saved planner file (previously saved .json file)</p>

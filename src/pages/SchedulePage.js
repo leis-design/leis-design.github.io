@@ -64,15 +64,11 @@ function SchedulePage() {
           <div className="text-md md:text-lg lg:text-xl mb-4 px-4">
             <p>
               The Visual Planner is a tool available to any eClass instructor,
-              intended to assist with visually planning out their course
-              schedule and assessments. Content can easily be exported and
-              incorporated into their eClass course(s). Instructors are
-              encouraged to review the available category options throughout to
-              see if some are over / under used, and to consider a wider variety
-              of course activities. From the student perspective, there is added
-              value in being able to see all course requirements visually within
-              a single page. They can also easily coordinate course expectations
-              and timelines across their courses that have adopted the tool.
+              intended to assist with visually planning their course schedule
+              and assessments. The resulting visual plan is also beneficial to
+              students, allowing them to see all course requirements within a
+              single page, and to easily coordinate course expectations across
+              their courses that have adopted the tool.
             </p>
           </div>
           <div className="text-md md:text-lg lg:text-xl px-4">
@@ -83,24 +79,36 @@ function SchedulePage() {
               <li>Easily transfer your Visual Plan to eClass.</li>
             </ol>
           </div>
+
           <div className="text-md md:text-lg lg:text-xl px-4">
-            <p>Tips:</p>
-            <ol className="mx-8 my-2 list-decimal list-inside text-md md:text-lg lg:text-xl">
-              <li>
-                Spread out course expectations for students to minimize their
-                impression of a ‘heavy workload’.
-              </li>
-              <li>
-                Update your Visual Planner in future terms with ease by
-                referencing or modifying your saved files.
-              </li>
-            </ol>
+            <AccordionItem title="Tips" isVisible={!isScheduleVisible}>
+              <ol className="mx-8 my-2 list-decimal list-inside text-md md:text-lg lg:text-xl">
+                <li>
+                  Review the category options throughout to see if some are over
+                  / under used, and to consider a wider variety of course
+                  activities.
+                </li>
+                <li>
+                  Spread out course expectations to minimize students'
+                  impression of a ‘heavy workload’.
+                </li>
+                <li>
+                  Update your Visual Planner in future terms with ease by
+                  referencing or modifying your saved files.
+                </li>
+              </ol>
+            </AccordionItem>
           </div>
+
           <div className="text-md md:text-lg lg:text-xl px-4">
             <p className="mt-2 text-lg text-red-500 italic font-semibold">
               For optimal performance, please access this application on Chrome,
               Firefox, or Edge browsers, and a desktop or laptop computer.
             </p>
+          </div>
+
+          <div className="text-lg md:text-xl lg:text-2xl mt-16 px-4">
+            Get Started
           </div>
         </div>
       )}
