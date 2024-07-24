@@ -57,21 +57,49 @@ function SchedulePage() {
   return (
     <div className="flex flex-col justify-start h-fit">
       {isWeekSelectorVisible && (
-        <div className="flex flex-col justify-center mx-auto my-8 text-start">
+        <div className="flex flex-col mx-auto my-8 text-start w-11/12 md:w-10/12 lg:w-8/12">
           <div className="text-lg md:text-xl lg:text-2xl mb-4 px-4">
             Welcome to Lassonde's Visual Planner Builder
           </div>
           <div className="text-md md:text-lg lg:text-xl mb-4 px-4">
+            <p>
+              The Visual Planner is a tool available to any eClass instructor,
+              intended to assist with visually planning out their course
+              schedule and assessments. Content can easily be exported and
+              incorporated into their eClass course(s). Instructors are
+              encouraged to review the available category options throughout to
+              see if some are over / under used, and to consider a wider variety
+              of course activities. From the student perspective, there is added
+              value in being able to see all course requirements visually within
+              a single page. They can also easily coordinate course expectations
+              and timelines across their courses that have adopted the tool.
+            </p>
+          </div>
+          <div className="text-md md:text-lg lg:text-xl px-4">
             <p>Use this tool to:</p>
             <ol className="mx-8 my-2 list-decimal list-inside text-md md:text-lg lg:text-xl">
-              <li>Build a visual planner for your course.</li>
+              <li>Build a Visual Plan for your course.</li>
               <li>Save your file for edits later.</li>
-              <li>Easily transfer the visual planner to eClass.</li>
+              <li>Easily transfer your Visual Plan to eClass.</li>
             </ol>
-            <p className="mt-4 text-lg text-red-500 italic font-semibold">
-              Note: For optimal performance, please use this application using
-              the Chrome, Firefox, or Edge browsers, and a desktop or laptop
-              computer
+          </div>
+          <div className="text-md md:text-lg lg:text-xl px-4">
+            <p>Tips:</p>
+            <ol className="mx-8 my-2 list-decimal list-inside text-md md:text-lg lg:text-xl">
+              <li>
+                Spread out course expectations for students to minimize their
+                impression of a ‘heavy workload’.
+              </li>
+              <li>
+                Update your Visual Planner in future terms with ease by
+                referencing or modifying your saved files.
+              </li>
+            </ol>
+          </div>
+          <div className="text-md md:text-lg lg:text-xl px-4">
+            <p className="mt-2 text-lg text-red-500 italic font-semibold">
+              For optimal performance, please access this application on Chrome,
+              Firefox, or Edge browsers, and a desktop or laptop computer.
             </p>
           </div>
         </div>
@@ -174,11 +202,11 @@ function SchedulePage() {
           <div className="w-full flex flex-col justify-start items-center mt-4">
             <div className="w-10/12 mx-4 text-md md:text-lg lg:text-xl">
               <span>
-                <p className="mx-2">
+                <p className="mx-2 mb-4">
                   1. Select the 'Save file' button. This will dowload a copy of
                   your planner to your local computer (.json file).
                 </p>
-                <p className="mx-2">
+                <p className="mx-2 mb-4">
                   2. You can use this file to edit the existing planner on the
                   home page.
                 </p>
@@ -210,7 +238,7 @@ function SchedulePage() {
           <div className="w-full flex flex-col justify-start items-center mt-4">
             <div className="w-10/12 mx-4 text-md md:text-lg lg:text-xl">
               <span>
-                <p className="mx-2">
+                <p className="mx-2 mb-4">
                   1. Once you are satisfied with your planner, select the Copy
                   Code button below. The code to your planner will be copied to
                   your clipboard.
@@ -221,7 +249,13 @@ function SchedulePage() {
                   toggle to html view and replace the code with the contents of
                   your clipboard.
                 </p>
-                <p className="mx-2">
+                <p className="mx-2 mb-4 text-lg text-red-500 italic font-semibold">
+                  Note: If you are not using the Lassonde eClass template, you
+                  can still add the planner in your eClass course. Paste the
+                  code within the 'HTML' text editor of any activity, such as
+                  the 'Page' activity.
+                </p>
+                <p className="mx-2 mb-4">
                   3. Select the Save and display button to view your planner in
                   eClass.
                 </p>

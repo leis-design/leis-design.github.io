@@ -533,7 +533,7 @@ function EditEventModal({
                     className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
                     htmlFor="color-selector"
                   >
-                    Event Color
+                    Event Type
                   </label>
                   <select
                     id="color-selector"
