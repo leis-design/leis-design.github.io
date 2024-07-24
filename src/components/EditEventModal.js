@@ -16,6 +16,7 @@ const dependentOptions = {
     "Lecture",
     "Panel",
     "Peer teaching and learning",
+    "Seminar",
     "Other",
   ],
   Lab: [
@@ -58,6 +59,7 @@ const dependentOptions = {
     "Reflection",
     "Other",
   ],
+  Offsite: ["Field trip", "Field work", "Plant tour", "Other"],
   Other: ["Other"],
 };
 

@@ -15,6 +15,7 @@ module.exports = {
         lab: "#9c3464",
         tutorial: "#00757e",
         assessment: "#cc3333",
+        offsite: "#3b7733",
         other: "#4e4c4c",
       },
     },

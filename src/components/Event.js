@@ -14,6 +14,7 @@ function Event({
     Lab: "bg-lab",
     Tutorial: "bg-tutorial",
     Assessment: "bg-assessment",
+    Offsite: "bg-offsite",
     Other: "bg-other",
   };
 
