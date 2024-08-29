@@ -57,60 +57,63 @@ function SchedulePage() {
   return (
     <div className="flex flex-col justify-start h-fit">
       {isWeekSelectorVisible && (
-        <div className="flex flex-col mx-auto my-8 text-start w-11/12 md:w-10/12 lg:w-8/12">
-          <div className="text-lg md:text-xl lg:text-2xl mb-4 px-4">
-            Welcome to Lassonde's Visual Planner Builder
-          </div>
-          <div className="text-md md:text-lg lg:text-xl mb-4 px-4">
-            <p>
-              The Visual Planner is a tool available to any eClass instructor,
-              intended to assist with visually planning their course schedule
-              and assessments. The resulting visual plan is also beneficial to
-              students, allowing them to see all course requirements within a
-              single page, and to easily coordinate course expectations across
-              their courses that have adopted the tool.
-            </p>
-          </div>
-          <div className="text-md md:text-lg lg:text-xl px-4">
-            <p>Use this tool to:</p>
-            <ol className="mx-8 my-2 list-decimal list-inside text-md md:text-lg lg:text-xl">
-              <li>Build a Visual Plan for your course.</li>
-              <li>Save your file for edits later.</li>
-              <li>Easily transfer your Visual Plan to eClass.</li>
-            </ol>
-          </div>
-
-          <div className="text-md md:text-lg lg:text-xl px-4">
-            <AccordionItem title="Tips" isVisible={!isScheduleVisible}>
+        <>
+          <div className="flex flex-col mx-auto my-8 text-start w-11/12 md:w-10/12 lg:w-8/12">
+            <div className="text-lg md:text-xl lg:text-2xl mb-4 px-4 flex-grow ">
+              Welcome to Lassonde's Visual Planner Builder
+            </div>
+            <div className="text-md md:text-lg lg:text-xl mb-4 px-4 flex-grow ">
+              <p>
+                The Visual Planner is a tool available to any eClass instructor,
+                intended to assist with visually planning their course schedule
+                and assessments. The resulting visual plan is also beneficial to
+                students, allowing them to see all course requirements within a
+                single page, and to easily coordinate course expectations across
+                their courses that have adopted the tool.
+              </p>
+            </div>
+            <div className="text-lg md:text-xl lg:text-2xl px-4 flex-grow ">
+              <p>Use this tool to:</p>
               <ol className="mx-8 my-2 list-decimal list-inside text-md md:text-lg lg:text-xl">
-                <li>
-                  Review the category options throughout to see if some are over
-                  / under used, and to consider a wider variety of course
-                  activities.
-                </li>
-                <li>
-                  Spread out course expectations to minimize students'
-                  impression of a ‘heavy workload’.
-                </li>
-                <li>
-                  Update your Visual Planner in future terms with ease by
-                  referencing or modifying your saved files.
-                </li>
+                <li>Build a Visual Plan for your course.</li>
+                <li>Save your file for edits later.</li>
+                <li>Easily transfer your Visual Plan to eClass.</li>
               </ol>
-            </AccordionItem>
+            </div>
+            <div className="text-md md:text-lg lg:text-xl px-4 mt-4 flex-grow ">
+              <AccordionItem title="Tips" isVisible={!isScheduleVisible}>
+                <ul className="mx-8 my-2 list-disc list-inside text-md md:text-lg lg:text-xl">
+                  <li>
+                    Review the category options throughout to see if some are
+                    over / under used, and to consider a wider variety of course
+                    activities.
+                  </li>
+                  <li>
+                    Spread out course expectations to minimize students'
+                    impression of a ‘heavy workload’.
+                  </li>
+                  <li>
+                    Update your Visual Planner in future terms with ease by
+                    referencing or modifying your saved files.
+                  </li>
+                </ul>
+              </AccordionItem>
+            </div>
+            <div className="text-md md:text-lg lg:text-xl px-4 flex-grow">
+              <p className="mt-2 text-lg text-red-500 italic font-semibold">
+                For optimal performance, please access this application on
+                Chrome, Firefox, or Edge browsers, and a desktop or laptop
+                computer.
+              </p>
+            </div>
           </div>
-
-          <div className="text-md md:text-lg lg:text-xl px-4">
-            <p className="mt-2 text-lg text-red-500 italic font-semibold">
-              For optimal performance, please access this application on Chrome,
-              Firefox, or Edge browsers, and a desktop or laptop computer.
-            </p>
+          <div className="w-full flex text-lg md:text-xl lg:text-2xl my-8 px-4 bg-gray-100 shadow-md">
+            <div className="w-12 h-auto max-w-full md:w-16 lg:w-20">&nbsp;</div>
+            <div className="mx-4 text-lg md:text-xl lg:text-2xl font-semibold">
+              Get Started
+            </div>
           </div>
-
-          <div className="text-lg md:text-xl lg:text-2xl mt-16 px-4">
-            Get Started
-          </div>
-        </div>
+        </>
       )}
 
       <div className="flex justify-center items-start">

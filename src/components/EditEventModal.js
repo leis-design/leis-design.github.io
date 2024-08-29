@@ -677,7 +677,7 @@ function EditEventModal({
               }`}
               disabled={isDeleteAllRepeated} // Disable the button if isDeleteAllRepeated is true
             >
-              Edit
+              Update
             </button>
 
             <div className="flex flex-col justify-center items-center">
