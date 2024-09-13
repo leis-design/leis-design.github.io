@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "homepage": "https://leis-design.github.io",
+  "homepage": "https://lms.lassondelearn.ca/visual-planner",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
